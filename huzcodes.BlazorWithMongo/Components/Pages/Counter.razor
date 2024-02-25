@@ -1,0 +1,30 @@
+﻿@page "/counter"
+@using huzcodes.BlazorWithMongo.Models
+@using huzcodes.BlazorWithMongo.Services
+@rendermode InteractiveServer
+@inject BooksService _booksService;
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+
+        var oBook = new Book();
+        oBook.Author = $"Author {currentCount}";
+        oBook.Price = currentCount * 10;
+        oBook.Category = $"Category {currentCount}";
+        oBook.BookName = $"BookName {currentCount}";
+        oBook.Id = $"Id-{(currentCount * 1000) / 2}";
+        _booksService.CreateAsync(oBook).GetAwaiter().GetResult();
+    }
+}
