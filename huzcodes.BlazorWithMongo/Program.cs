@@ -12,6 +12,7 @@ builder.Services.Configure<BlazorDatabaseSettings>(
     builder.Configuration.GetSection("BlazorDatabase"));
 
 builder.Services.AddSingleton<BooksService>();
+builder.Services.AddTransient<IProvider, Provider>();
 
 var app = builder.Build();
 
