@@ -2,7 +2,7 @@
 @using huzcodes.BlazorWithMongo.Models
 @using huzcodes.BlazorWithMongo.Services
 @rendermode InteractiveServer
-@inject BooksService _booksService;
+@inject IProvider _provider;
 
 <PageTitle>Counter</PageTitle>
 
@@ -18,13 +18,6 @@
     private void IncrementCount()
     {
         currentCount++;
-
-        var oBook = new Book();
-        oBook.Author = $"Author {currentCount}";
-        oBook.Price = currentCount * 10;
-        oBook.Category = $"Category {currentCount}";
-        oBook.BookName = $"BookName {currentCount}";
-        oBook.Id = $"Id-{(currentCount * 1000) / 2}";
-        _booksService.CreateAsync(oBook).GetAwaiter().GetResult();
+        _provider.Create(currentCount);
     }
 }
