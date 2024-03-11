@@ -21,7 +21,7 @@
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
       "environmentVariables": {
-        "ASPNETCORE_HTTP_PORTS": "3001"
+        "ASPNETCORE_HTTP_PORTS": "8080"
       },
       "publishAllPorts": true
     }
