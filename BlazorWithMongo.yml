@@ -21,5 +21,9 @@ services:
          container_name: BlazorWithMongoWebsite
          image: blazor-mongo-website
          ports:
-             - 3001:3001
+             - 8080:8080
+         environment:
+             - BlazorDatabase__ConnectionString=mongodb://admin:admin@localhost:27017
+             - BlazorDatabase__DatabaseName=blazorDB
+             - BlazorDatabase__BooksCollectionName=Books
      
