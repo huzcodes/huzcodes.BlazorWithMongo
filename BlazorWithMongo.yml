@@ -8,6 +8,8 @@ services:
         environment: 
             - MONGO_INITDB_ROOT_USERNAME=admin
             - MONGO_INITDB_ROOT_PASSWORD=admin
+        volumes: 
+            - mongo-data
      mongo-express:
         container_name: BlazorWithMongoExpress
         image: mongo-express
@@ -26,4 +28,7 @@ services:
              - BlazorDatabase__ConnectionString=mongodb://admin:admin@localhost:27017
              - BlazorDatabase__DatabaseName=blazorDB
              - BlazorDatabase__BooksCollectionName=Books
+     volumes:
+         mongo-data:
+           driver: local
      
